@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 'dept' and 'sem' are common for all beans
+    So it is defined as a generic one -->
+    <bean id="classInfo" abstract="true">
+        <property name="dept" value="IT"/>
+        <property name="sem" value="6"/>
+    </bean>
+
+    <!-- Defining student beans -->
+    <bean id="s1" class="beans.Student" parent="classInfo">
+        <property name="name" value="Mohideen Abdul Katheer M"/>
+        <property name="regNo" value="152071015"/>
+    </bean>
+
+    <bean id="s2" class="beans.Student" parent="classInfo">
+        <property name="name" value="Dhanalakshmi N"/>
+        <property name="regNo" value="152071004"/>
+    </bean>
+
+    <bean id="s3" class="beans.Student" parent="classInfo">
+        <property name="name" value="Vinothkumar N"/>
+        <property name="regNo" value="152071033"/>
+    </bean>
+
+    <bean id="s4" class="beans.Student" parent="classInfo">
+        <property name="name" value="Ruthraj P"/>
+        <property name="regNo" value="152071021"/>
+    </bean>
+
+    <!-- Defininf marks for each student -->
+    <bean id="m1" class="beans.Marks">
+        <property name="tamil" value="88"/>
+        <property name="english" value="70"/>
+        <property name="cProgramming" value="98"/>
+        <property name="dataStructures" value="88"/>
+        <property name="algorithms" value="90"/>
+    </bean>
+
+    <bean id="m2" class="beans.Marks">
+        <property name="tamil" value="80"/>
+        <property name="english" value="75"/>
+        <property name="cProgramming" value="78"/>
+        <property name="dataStructures" value="85"/>
+        <property name="algorithms" value="88"/>
+    </bean>
+
+    <bean id="m3" class="beans.Marks">
+        <property name="tamil" value="85"/>
+        <property name="english" value="68"/>
+        <property name="cProgramming" value="70"/>
+        <property name="dataStructures" value="82"/>
+        <property name="algorithms" value="67"/>
+    </bean>
+
+    <bean id="m4" class="beans.Marks">
+        <property name="tamil" value="65"/>
+        <property name="english" value="68"/>
+        <property name="cProgramming" value="80"/>
+        <property name="dataStructures" value="78"/>
+        <property name="algorithms" value="76"/>
+    </bean>
+
+    <bean id="marksheet" class="business.MarkSheet">
+        <property name="m">
+            <map>
+                <entry key-ref="s1" value-ref="m1"/>
+                <entry key-ref="s2" value-ref="m2"/>
+                <entry key-ref="s3" value-ref="m3"/>
+                <entry key-ref="s4" value-ref="m4"/>
+            </map>
+        </property>
+    </bean>
+</beans>
